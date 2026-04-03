@@ -1,0 +1,13 @@
+{
+    "editor.accessibilitySupport": "off",
+    "vscode-cucumberjs-navigator.steps": [
+        "tests/step-definitions/**/*.ts"
+    ],
+    "vscode-cucumberjs-navigator.featurePaths": [
+        "tests/feature-files"
+    ],
+    "vscode-cucumberjs-navigator.StepFilesSuffixes": [
+        "Steps.ts",
+        ".steps.ts"
+    ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "sasse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber-js",
+    "test:headed": "cucumber-js",
+    "test:debug": "node --inspect-brk node_modules/.bin/cucumber-js",
+    "test:feature": "cucumber-js tests/feature-files/login.feature",
+    "test:scenario": "cucumber-js --config cucumber.single.js --name",
+    "test:tags": "cucumber-js --config cucumber.single.js --tags",
+    "test:line": "cucumber-js --config cucumber.single.js",
+    "test:smoke": "cucumber-js --tags @smoke",
+    "test:regression": "cucumber-js --tags @regression",
+    "test:negative": "cucumber-js --tags @negative"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/dotenv": "^6.1.1",
+    "@types/node": "^25.5.0",
+    "dotenv": "^17.4.0",
+    "ts-node": "^10.9.2"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^12.7.0"
+  }
+}

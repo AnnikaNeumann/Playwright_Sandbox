@@ -1,0 +1,101 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "octopus-energy-login;failed-login-with-invalid-credentials",
+        "keyword": "Scenario",
+        "line": 11,
+        "name": "Failed login with invalid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 630789600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am on the Octopus Energy login page",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:8"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3415040600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I click Login button",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 950985900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I enter invalid credentials",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:29"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2790933899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I should see an error message",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:33"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1375394199
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 838719100
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 10
+          },
+          {
+            "name": "@negative",
+            "line": 10
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "octopus-energy-login",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Octopus Energy Login",
+    "tags": [],
+    "uri": "tests\\feature-files\\login.feature"
+  }
+]
