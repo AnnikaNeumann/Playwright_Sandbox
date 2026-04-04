@@ -20,7 +20,12 @@ export class LoginPage {
   }
 
   async goto() {
-    await this.page.goto(process.env.BASE_URL!);
+    const baseUrl = process.env.BASE_URL;
+    if (!baseUrl) {
+      throw new Error('BASE_URL is not set. Provide it in .env locally or as a GitHub Actions secret in CI.');
+    }
+
+    await this.page.goto(baseUrl);
   }
 
   async clickLoginButton() {

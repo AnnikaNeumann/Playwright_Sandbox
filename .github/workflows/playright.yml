@@ -16,9 +16,13 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
-      run: npx playwright install --with-deps
-    - name: Run Playwright tests (headless)
+      run: npx playwright install chromium --with-deps
+    - name: Run Cucumber tests (headless)
       run: npm run test:ci
+      env:
+        BASE_URL: ${{ secrets.BASE_URL }}
+        TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
+        TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:

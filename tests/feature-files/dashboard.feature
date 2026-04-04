@@ -1,3 +1,4 @@
+@regression
 Feature: Octopus Energy Dashboard
 
 Background:

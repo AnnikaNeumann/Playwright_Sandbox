@@ -1,3 +1,4 @@
+@regression
 Feature: Login Page
 
 Background:
@@ -20,7 +21,7 @@ Scenario: Successful logout
   When I click Logout button
   Then I should be on the Octopus Energy login page
 
-@login
+@login @negative
 Scenario: Failed login with invalid credentials
   # Verifies that user cannot login with invalid credentials
   Given I am on the Octopus Energy login page
