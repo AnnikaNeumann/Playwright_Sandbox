@@ -11,7 +11,7 @@ const onLoginPage = async function (this: CustomWorld) {
 };
 
 Given('I am on the Octopus Energy login page', onLoginPage);
-Then('I am on the  Octopus Energy login page', onLoginPage);
+Then('I should be on the Octopus Energy login page', onLoginPage);
 
 
 When('I click Login button', async function (this: CustomWorld) {

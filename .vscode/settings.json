@@ -1,5 +1,8 @@
 {
     "editor.accessibilitySupport": "off",
+    "files.associations": {
+        "*.feature": "feature"
+    },
     "vscode-cucumberjs-navigator.steps": [
         "tests/step-definitions/**/*.ts"
     ],
@@ -9,5 +12,16 @@
     "vscode-cucumberjs-navigator.StepFilesSuffixes": [
         "Steps.ts",
         ".steps.ts"
-    ]
+    ],
+
+    "cucumberautocomplete.steps": [
+        "tests/step-definitions/**/*.ts"
+    ],
+    "cucumberautocomplete.syncfeatures": "tests/feature-files/**/*.feature",
+    "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then|And|But|\\*)\\(",
+    "cucumberautocomplete.strictGherkinCompletion": true,
+    "cucumberautocomplete.strictGherkinValidation": true,
+    "cucumberautocomplete.stepsInvariants": true,
+    "cucumberautocomplete.smartSnippets": true,
+    "cucumberautocomplete.onTypeFormat": true
 }
