@@ -4,45 +4,97 @@
     "elements": [
       {
         "description": "",
-        "id": "octopus-energy-dashboard;open-dashboard-page",
+        "id": "octopus-energy-dashboard;verify-energy-balance-is-displayed-on-the-dashboard",
         "keyword": "Scenario",
-        "line": 4,
-        "name": "Open dashboard page",
+        "line": 10,
+        "name": "Verify energy balance is displayed on the dashboard",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 685255600
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 5,
-            "name": "I am on the Octopus Energy dashboard page",
+            "line": 4,
+            "name": "I am on the Octopus Energy login page",
             "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:6"
+              "location": "tests\\step-definitions\\loginSteps.ts:13"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 3957566699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I click Login button",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1268865699
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I enter valid credentials",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 4876015900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "I should be redirected to the dashboard",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 16259157800
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 11,
+            "name": "I verify the users energy balance '£55.59' is displayed on the dashboard",
+            "match": {
+              "location": "tests\\step-definitions\\dashboardSteps.ts:16"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 37614199
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 787767399
             }
           }
         ],
         "tags": [
           {
             "name": "@dashboard",
-            "line": 3
+            "line": 9
           }
         ],
         "type": "scenario"
@@ -54,398 +106,5 @@
     "name": "Octopus Energy Dashboard",
     "tags": [],
     "uri": "tests\\feature-files\\dashboard.feature"
-  },
-  {
-    "description": "",
-    "elements": [
-      {
-        "description": "",
-        "id": "login-page;successful-login-and-logout-with-valid-credentials",
-        "keyword": "Scenario",
-        "line": 10,
-        "name": "Successful login and logout with valid credentials",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 4,
-            "name": "I am on the Octopus Energy login page",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:13"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 5,
-            "name": "I click Login button",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:17"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 6,
-            "name": "I enter valid credentials",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:25"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 7,
-            "name": "I should be redirected to the dashboard",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:32"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 12,
-            "name": "I am on the Octopus Energy login page",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:13"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 13,
-            "name": "I click Login button",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:17"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 14,
-            "name": "I enter valid credentials",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:25"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "I should be redirected to the dashboard",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:32"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@login",
-            "line": 9
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "login-page;successful-logout",
-        "keyword": "Scenario",
-        "line": 18,
-        "name": "Successful logout",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 4,
-            "name": "I am on the Octopus Energy login page",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:13"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 5,
-            "name": "I click Login button",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:17"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 6,
-            "name": "I enter valid credentials",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:25"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 7,
-            "name": "I should be redirected to the dashboard",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:32"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 20,
-            "name": "I click Logout button",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:21"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 21,
-            "name": "I should be on the Octopus Energy login page",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:14"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@login",
-            "line": 17
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "login-page;failed-login-with-invalid-credentials",
-        "keyword": "Scenario",
-        "line": 24,
-        "name": "Failed login with invalid credentials",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 4,
-            "name": "I am on the Octopus Energy login page",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:13"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 5,
-            "name": "I click Login button",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:17"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 6,
-            "name": "I enter valid credentials",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:25"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 7,
-            "name": "I should be redirected to the dashboard",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:32"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Given ",
-            "line": 26,
-            "name": "I am on the Octopus Energy login page",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:13"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 27,
-            "name": "I click Login button",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:17"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
-            "line": 28,
-            "name": "I enter invalid credentials",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:36"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 29,
-            "name": "I should see an error message",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:40"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@login",
-            "line": 23
-          }
-        ],
-        "type": "scenario"
-      }
-    ],
-    "id": "login-page",
-    "line": 1,
-    "keyword": "Feature",
-    "name": "Login Page",
-    "tags": [],
-    "uri": "tests\\feature-files\\login.feature"
   }
 ]

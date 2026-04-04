@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cucumber-js",
     "test:headed": "cucumber-js",
-    "test:debug": "node --inspect-brk node_modules/.bin/cucumber-js",
+    "test:debug": "node --inspect-brk node_modules/@cucumber/cucumber/bin/cucumber.js --config cucumber.js",
     "test:feature": "cucumber-js tests/feature-files/login.feature",
     "test:scenario": "cucumber-js --config cucumber.single.js --name",
     "test:tags": "cucumber-js --config cucumber.single.js --tags",

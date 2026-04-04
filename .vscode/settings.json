@@ -17,6 +17,8 @@
     "cucumberautocomplete.steps": [
         "tests/step-definitions/**/*.ts"
     ],
+    "bdd-gotostep.include": "tests/**/*.ts",
+    "bdd-gotostep.exclude": "tests/**/*.feature",
     "cucumberautocomplete.syncfeatures": "tests/feature-files/**/*.feature",
     "cucumberautocomplete.gherkinDefinitionPart": "(Given|When|Then|And|But|\\*)\\(",
     "cucumberautocomplete.strictGherkinCompletion": true,

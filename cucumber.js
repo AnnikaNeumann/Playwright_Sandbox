@@ -1,5 +1,4 @@
 require('dotenv').config({ path: '.env' });
-
 require('ts-node').register({
   project: './tsconfig.json',
   transpileOnly: true,
@@ -27,4 +26,3 @@ module.exports = {
     strict: true
   }
 };
-
