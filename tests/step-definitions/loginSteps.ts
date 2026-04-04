@@ -5,14 +5,21 @@ import { LoginPage } from '../pages/LoginPage';
 
 let loginPage: LoginPage;
 
-Given('I am on the Octopus Energy login page', async function (this: CustomWorld) {
+const onLoginPage = async function (this: CustomWorld) {
   loginPage = new LoginPage(this.page);
   await loginPage.goto();
-});
+};
+
+Given('I am on the Octopus Energy login page', onLoginPage);
+Then('I am on the  Octopus Energy login page', onLoginPage);
 
 
 When('I click Login button', async function (this: CustomWorld) {
   await loginPage.clickLoginButton();
+});
+
+When('I click Logout button', async function (this: CustomWorld) {
+  await loginPage.clickLogoutButton();
 });
 
 When('I enter valid credentials', async function (this: CustomWorld) {
@@ -23,7 +30,7 @@ When('I enter valid credentials', async function (this: CustomWorld) {
 });
 
 Then('I should be redirected to the dashboard', async function (this: CustomWorld) {
-  await loginPage.redirectionToDashboard(10000);
+  await loginPage.redirectionToDashboard(30000);
 });
 
 When('I enter invalid credentials', async function (this: CustomWorld) {

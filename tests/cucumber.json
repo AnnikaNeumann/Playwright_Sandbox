@@ -4,69 +4,95 @@
     "elements": [
       {
         "description": "",
-        "id": "octopus-energy-login;failed-login-with-invalid-credentials",
+        "id": "octopus-energy-login;successful-logout",
         "keyword": "Scenario",
-        "line": 11,
-        "name": "Failed login with invalid credentials",
+        "line": 13,
+        "name": "Successful logout",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 630789600
+              "duration": 818288700
             }
           },
           {
             "arguments": [],
             "keyword": "Given ",
-            "line": 12,
+            "line": 14,
             "name": "I am on the Octopus Energy login page",
             "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:8"
+              "location": "tests\\step-definitions\\loginSteps.ts:13"
             },
             "result": {
               "status": "passed",
-              "duration": 3415040600
+              "duration": 3251356299
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 13,
+            "line": 15,
             "name": "I click Login button",
             "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:14"
+              "location": "tests\\step-definitions\\loginSteps.ts:17"
             },
             "result": {
               "status": "passed",
-              "duration": 950985900
+              "duration": 1159531599
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 14,
-            "name": "I enter invalid credentials",
+            "line": 16,
+            "name": "I enter valid credentials",
             "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:29"
+              "location": "tests\\step-definitions\\loginSteps.ts:25"
             },
             "result": {
               "status": "passed",
-              "duration": 2790933899
+              "duration": 3757768799
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
-            "line": 15,
-            "name": "I should see an error message",
+            "line": 17,
+            "name": "I should be redirected to the dashboard",
             "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:33"
+              "location": "tests\\step-definitions\\loginSteps.ts:32"
             },
             "result": {
               "status": "passed",
-              "duration": 1375394199
+              "duration": 13712389100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 18,
+            "name": "I click Logout button",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1996246400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 19,
+            "name": "I am on the Octopus Energy login page",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1650349800
             }
           },
           {
@@ -74,18 +100,14 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 838719100
+              "duration": 1069117899
             }
           }
         ],
         "tags": [
           {
             "name": "@login",
-            "line": 10
-          },
-          {
-            "name": "@negative",
-            "line": 10
+            "line": 12
           }
         ],
         "type": "scenario"

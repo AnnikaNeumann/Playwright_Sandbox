@@ -7,6 +7,7 @@ export class LoginPage {
   readonly signInButton: Locator;
   readonly errorMessage: Locator;
   readonly loginButton: Locator;
+  readonly logoutButton: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +16,7 @@ export class LoginPage {
     this.signInButton = page.locator('button[type="submit"]');
     this.errorMessage = page.locator('[class*="error"], [class*="alert"]');
     this.loginButton = page.locator('div[class*="coralHeader-actions-dynamic"]');
+    this.logoutButton = page.locator('form[id="logout-form"] [type="submit"]');
   }
 
   async goto() {
@@ -23,6 +25,10 @@ export class LoginPage {
 
   async clickLoginButton() {
     await this.loginButton.click();
+  }
+
+  async clickLogoutButton(){
+    await this.logoutButton.click();
   }
 
     async login(email: string, password: string) {
