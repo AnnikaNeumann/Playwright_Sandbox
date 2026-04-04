@@ -2,10 +2,10 @@ import { DashboardPage } from '../pages/DashboardPage';
 import { Given, When, Then } from '@cucumber/cucumber';
 import { CustomWorld } from '../support/world';
 
-let dashboardPage: DashboardPage;
+const getDashboardPage = (world: CustomWorld): DashboardPage => new DashboardPage(world.page);
 
 Given('I am on the Octopus Energy dashboard page', async function (this: CustomWorld) {
-  dashboardPage = new DashboardPage(this.page);
+  const dashboardPage = getDashboardPage(this);
   await dashboardPage.redirectionToDashboard(30000);
 });
 
@@ -14,8 +14,6 @@ When('I verify the users name is displayed on the dashboard', async function (th
 });
 
 Then('I verify the users energy balance {string} is displayed on the dashboard', async function (this: CustomWorld, balance: string) {
-  if (!dashboardPage) {
-    dashboardPage = new DashboardPage(this.page);
-  }
+  const dashboardPage = getDashboardPage(this);
   await dashboardPage.verifyEnergyBalance(balance, 30000);
 });
