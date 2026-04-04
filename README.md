@@ -1,6 +1,6 @@
 # Playwright Sandbox
 
-Practical Playwright learning project built alongside my daily Selenium + C# work to level up with modern TypeScript, Cucumber BDD, and CI-ready UI test automation.
+Practical Playwright learning project built by levering VS Code built-in AI features alongside my daily Selenium + C# work to level up with modern TypeScript, Cucumber BDD, and CI-ready UI test automation.
 
 ## Why this project
 
@@ -12,6 +12,7 @@ The goal is to practice production-style test design with:
 - Cucumber BDD scenarios and step definitions
 - Selective execution by tags, scenario name, and feature line
 - CI-friendly test organization
+
 
 ## Tech stack
 
