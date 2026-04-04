@@ -12,7 +12,16 @@ export class CustomWorld extends World {
   }
 
   async init() {
-    this.browser = await chromium.launch({ headless: false, slowMo: 800 });
+    const headless = process.env.PW_HEADLESS === 'true'
+      ? true
+      : process.env.PW_HEADED === 'true'
+        ? false
+        : !!process.env.CI;
+
+    this.browser = await chromium.launch({
+      headless,
+      slowMo: headless ? 0 : 800,
+    });
     this.context = await this.browser.newContext();
     this.page = await this.context.newPage();
   }

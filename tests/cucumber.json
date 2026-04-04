@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 685255600
+              "duration": 1385062099
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3957566699
+              "duration": 2784724400
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1268865699
+              "duration": 380449900
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4876015900
+              "duration": 3241245299
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 16259157800
+              "duration": 6705134599
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 37614199
+              "duration": 163373799
             }
           },
           {
@@ -87,7 +87,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 787767399
+              "duration": 227754199
             }
           }
         ],
@@ -106,5 +106,400 @@
     "name": "Octopus Energy Dashboard",
     "tags": [],
     "uri": "tests\\feature-files\\dashboard.feature"
+  },
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-page;successful-login-and-logout-with-valid-credentials",
+        "keyword": "Scenario",
+        "line": 10,
+        "name": "Successful login and logout with valid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 329550400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on the Octopus Energy login page",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2207482900
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I click Login button",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 179109300
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I enter valid credentials",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 3033612499
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "I should be redirected to the dashboard",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6117160299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 12,
+            "name": "I am on the Octopus Energy login page",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 928262599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 13,
+            "name": "I click Login button",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 664301100
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 14,
+            "name": "I enter valid credentials",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:25"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 30021976700,
+              "error_message": "Error: function timed out, ensure the promise resolves within 30000 milliseconds\n    at Timeout.<anonymous> (C:\\Users\\sasse\\Playwright_Sandbox\\node_modules\\@cucumber\\cucumber\\src\\time.ts:52:14)\n    at listOnTimeout (node:internal/timers:605:17)\n    at processTimers (node:internal/timers:541:7)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 15,
+            "name": "I should be redirected to the dashboard",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:32"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 142512099
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 9
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-page;successful-logout",
+        "keyword": "Scenario",
+        "line": 18,
+        "name": "Successful logout",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 291945599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on the Octopus Energy login page",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1928934099
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I click Login button",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 179185700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I enter valid credentials",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2934281400
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "I should be redirected to the dashboard",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 5604108700
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 20,
+            "name": "I click Logout button",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:21"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 632833299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 21,
+            "name": "I should be on the Octopus Energy login page",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:14"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 693355200
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 135548800
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 17
+          }
+        ],
+        "type": "scenario"
+      },
+      {
+        "description": "",
+        "id": "login-page;failed-login-with-invalid-credentials",
+        "keyword": "Scenario",
+        "line": 24,
+        "name": "Failed login with invalid credentials",
+        "steps": [
+          {
+            "keyword": "Before",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 288626299
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 4,
+            "name": "I am on the Octopus Energy login page",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1553677199
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 5,
+            "name": "I click Login button",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 548423600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 6,
+            "name": "I enter valid credentials",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:25"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2809120899
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 7,
+            "name": "I should be redirected to the dashboard",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:32"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 6547127600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 26,
+            "name": "I am on the Octopus Energy login page",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:13"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 2002034399
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 27,
+            "name": "I click Login button",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:17"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 359267799
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 28,
+            "name": "I enter invalid credentials",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:36"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 30007144599,
+              "error_message": "Error: function timed out, ensure the promise resolves within 30000 milliseconds\n    at Timeout.<anonymous> (C:\\Users\\sasse\\Playwright_Sandbox\\node_modules\\@cucumber\\cucumber\\src\\time.ts:52:14)\n    at listOnTimeout (node:internal/timers:605:17)\n    at processTimers (node:internal/timers:541:7)"
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 29,
+            "name": "I should see an error message",
+            "match": {
+              "location": "tests\\step-definitions\\loginSteps.ts:40"
+            },
+            "result": {
+              "status": "skipped",
+              "duration": 0
+            }
+          },
+          {
+            "keyword": "After",
+            "hidden": true,
+            "result": {
+              "status": "passed",
+              "duration": 206389500
+            }
+          }
+        ],
+        "tags": [
+          {
+            "name": "@login",
+            "line": 23
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-page",
+    "line": 1,
+    "keyword": "Feature",
+    "name": "Login Page",
+    "tags": [],
+    "uri": "tests\\feature-files\\login.feature"
   }
 ]

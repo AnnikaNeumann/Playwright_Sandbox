@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js",
-    "test:headed": "cucumber-js",
+    "test:headed": "cross-env PW_HEADED=true cucumber-js",
+    "test:ci": "cross-env CI=true PW_HEADLESS=true cucumber-js",
     "test:debug": "node --inspect-brk node_modules/@cucumber/cucumber/bin/cucumber.js --config cucumber.js",
     "test:feature": "cucumber-js tests/feature-files/login.feature",
     "test:scenario": "cucumber-js --config cucumber.single.js --name",
@@ -23,6 +24,7 @@
     "@playwright/test": "^1.59.1",
     "@types/dotenv": "^6.1.1",
     "@types/node": "^25.5.0",
+    "cross-env": "^7.0.3",
     "dotenv": "^17.4.0",
     "ts-node": "^10.9.2"
   },
