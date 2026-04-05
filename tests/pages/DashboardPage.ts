@@ -46,7 +46,9 @@ export class DashboardPage {
   async clickPersonalDetails(timeoutMs = 10000)
   {
     await this.personalDetailsLink.click();
-    await this.page.waitForLoadState('domcontentloaded', { timeout: timeoutMs });
+    await this.page.waitForLoadState('networkidle', { timeout: timeoutMs }).catch(() => {
+      return this.page.waitForLoadState('domcontentloaded', { timeout: timeoutMs });
+    });
   }
 
   }

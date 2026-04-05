@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 728993399
+              "duration": 1330050099
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5819791300
+              "duration": 4703632200
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1779905800
+              "duration": 1265214400
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3956972799
+              "duration": 3664175100
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10780408900
+              "duration": 9704107799
             }
           },
           {
@@ -75,11 +75,11 @@
             "line": 12,
             "name": "I verify the users energy balance '£55.59' is displayed on the dashboard",
             "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:16"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:17"
             },
             "result": {
               "status": "passed",
-              "duration": 297448000
+              "duration": 66287799
             }
           },
           {
@@ -88,11 +88,11 @@
             "line": 13,
             "name": "I click 'Personal details'",
             "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:21"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:22"
             },
             "result": {
               "status": "passed",
-              "duration": 1296020899
+              "duration": 1143173800
             }
           },
           {
@@ -101,11 +101,11 @@
             "line": 14,
             "name": "I verify users contact details are displayed on the personal details page",
             "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:25"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:26"
             },
             "result": {
               "status": "passed",
-              "duration": 188653300
+              "duration": 820820100
             }
           },
           {
@@ -113,7 +113,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1004712500
+              "duration": 1030269299
             }
           }
         ],

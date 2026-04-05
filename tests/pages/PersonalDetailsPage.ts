@@ -8,10 +8,16 @@ export class PersonalDetailsPage {
   }
 
   async verifyContactDetails(userEmail: string, userFullName: string, userPhone: string, timeoutMs = 30000) {
-    await this.page.waitForLoadState('domcontentloaded');
+    // Wait for page to settle after navigation
+    await this.page.waitForLoadState('networkidle').catch(() => {
+      // networkidle can timeout on CI; fallback to domcontentloaded
+      return this.page.waitForLoadState('domcontentloaded');
+    });
 
+    // Wait for the contact details heading to confirm we're on the right page
     const heading = this.page.getByText('Your contact details', { exact: false }).first();
     await heading.waitFor({ state: 'visible', timeout: timeoutMs });
+    console.log('[PersonalDetailsPage] Contact details heading found, verifying values...');
 
     const card = heading.locator('xpath=ancestor::*[self::section or self::div][1]');
     await card.waitFor({ state: 'visible', timeout: timeoutMs });
