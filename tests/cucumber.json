@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 700488499
+              "duration": 596328499
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3635970800
+              "duration": 5037432000
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1127366800
+              "duration": 1150265900
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3512830300
+              "duration": 3577487999
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 7350696099
+              "duration": 10120532799
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 81222000
+              "duration": 28959200
             }
           },
           {
@@ -92,7 +92,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1534670099
+              "duration": 1062095699
             }
           },
           {
@@ -101,11 +101,11 @@
             "line": 14,
             "name": "I verify users contact details are displayed on the personal details page",
             "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:35"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:34"
             },
             "result": {
               "status": "passed",
-              "duration": 1559096900
+              "duration": 1082567100
             }
           },
           {
@@ -113,7 +113,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 770993500
+              "duration": 598768000
             }
           }
         ],

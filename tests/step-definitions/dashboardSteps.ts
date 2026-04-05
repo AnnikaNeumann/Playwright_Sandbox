@@ -19,17 +19,12 @@ Then('I verify the users energy balance {string} is displayed on the dashboard',
   await dashboardPage.verifyEnergyBalance(balance, 30000);
 });
 
-// When('I click {string}', async function (this: CustomWorld, linkText: string) {
-//   await this.page.click(`text=${linkText}`);
-// });
-
 When('I click {string}', async function (this: CustomWorld, linkText: string) {
   const link = this.page.getByRole('link', { name: linkText, exact: true });
+  await link.click();
 
-  await Promise.all([
-    this.page.waitForLoadState('domcontentloaded'),
-    link.click(),
-  ]);
+  // Wait for something that guarantees the page is ready:
+  await this.page.getByRole('heading', { level: 1, name: /Your settings/i }).waitFor({ timeout: 30_000 });
 });
 
 Then('I verify users contact details are displayed on the personal details page', {timeout: 60_000}, async function (this: CustomWorld) {
