@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "smoke-tests;login-path-works-for-valid-user",
+        "id": "octopus-energy-dashboard;verify-energy-balance-is-displayed-on-the-dashboard",
         "keyword": "Scenario",
-        "line": 4,
-        "name": "Login path works for valid user",
+        "line": 11,
+        "name": "Verify energy balance is displayed on the dashboard",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 728993399
             }
           },
           {
@@ -26,8 +26,8 @@
               "location": "tests\\step-definitions\\loginSteps.ts:13"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 5819791300
             }
           },
           {
@@ -39,8 +39,8 @@
               "location": "tests\\step-definitions\\loginSteps.ts:17"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 1779905800
             }
           },
           {
@@ -49,11 +49,11 @@
             "line": 7,
             "name": "I enter valid credentials",
             "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:25"
+              "location": "tests\\step-definitions\\loginSteps.ts:27"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 3956972799
             }
           },
           {
@@ -62,138 +62,84 @@
             "line": 8,
             "name": "I should be redirected to the dashboard",
             "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:32"
+              "location": "tests\\step-definitions\\loginSteps.ts:35"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "keyword": "After",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          }
-        ],
-        "tags": [
-          {
-            "name": "@smoke",
-            "line": 1
-          }
-        ],
-        "type": "scenario"
-      },
-      {
-        "description": "",
-        "id": "smoke-tests;dashboard-energy-balance-is-visible",
-        "keyword": "Scenario",
-        "line": 10,
-        "name": "Dashboard energy balance is visible",
-        "steps": [
-          {
-            "keyword": "Before",
-            "hidden": true,
-            "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 10780408900
             }
           },
           {
             "arguments": [],
-            "keyword": "Given ",
-            "line": 11,
-            "name": "I am on the Octopus Energy login page",
-            "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:13"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "When ",
+            "keyword": "Then ",
             "line": 12,
-            "name": "I click Login button",
+            "name": "I verify the users energy balance '£55.59' is displayed on the dashboard",
             "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:17"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:16"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 297448000
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
             "line": 13,
-            "name": "I enter valid credentials",
+            "name": "I click 'Personal details'",
             "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:25"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:21"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 1296020899
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 14,
-            "name": "I should be redirected to the dashboard",
+            "name": "I verify users contact details are displayed on the personal details page",
             "match": {
-              "location": "tests\\step-definitions\\loginSteps.ts:32"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:25"
             },
             "result": {
-              "status": "skipped",
-              "duration": 0
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 15,
-            "name": "I verify the users energy balance '£55.59' is displayed on the dashboard",
-            "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:16"
-            },
-            "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 188653300
             }
           },
           {
             "keyword": "After",
             "hidden": true,
             "result": {
-              "status": "skipped",
-              "duration": 0
+              "status": "passed",
+              "duration": 1004712500
             }
           }
         ],
         "tags": [
           {
-            "name": "@smoke",
+            "name": "@regression",
             "line": 1
+          },
+          {
+            "name": "@dashboard",
+            "line": 10
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "smoke-tests",
+    "id": "octopus-energy-dashboard",
     "line": 2,
     "keyword": "Feature",
-    "name": "Smoke Tests",
+    "name": "Octopus Energy Dashboard",
     "tags": [
       {
-        "name": "@smoke",
+        "name": "@regression",
         "line": 1
       }
     ],
-    "uri": "tests\\feature-files\\smoke.feature"
+    "uri": "tests\\feature-files\\dashboard.feature"
   }
 ]

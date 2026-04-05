@@ -10,3 +10,5 @@ Background:
 @dashboard
 Scenario: Verify energy balance is displayed on the dashboard
  Then I verify the users energy balance '£55.59' is displayed on the dashboard
+ When I click 'Personal details'
+ Then I verify users contact details are displayed on the personal details page

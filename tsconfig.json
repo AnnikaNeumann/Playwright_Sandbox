@@ -15,7 +15,7 @@
     "sourceMap": true,
     "moduleResolution": "bundler",
     "ignoreDeprecations": "6.0",
-    "types": ["node", "jest"]
+    "types": ["node"]
   },
   "ts-node": {
     "transpileOnly": true,

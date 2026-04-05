@@ -67,8 +67,10 @@ npm run test:line -- "tests/feature-files/login.feature:4"
 Create a `.env` file for local execution and add required values such as:
 
 - `BASE_URL`
-- `TEST_USERNAME`
+- `TEST_USER_EMAIL`
 - `TEST_PASSWORD`
+- `TEST_USER_FULL_NAME`
+- `TEST_USER_PHONE`
 
 ## Current focus
 

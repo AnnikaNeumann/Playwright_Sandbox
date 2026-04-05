@@ -27,7 +27,7 @@ When('I click Logout button', async function (this: CustomWorld) {
 When('I enter valid credentials', async function (this: CustomWorld) {
   const loginPage = getLoginPage(this);
   await loginPage.login(
-    process.env.TEST_USERNAME!,
+    process.env.TEST_USER_EMAIL!,
     process.env.TEST_PASSWORD!,
   );
 });

@@ -4,6 +4,8 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 jobs:
   test:
     timeout-minutes: 60
@@ -12,7 +14,7 @@ jobs:
     - uses: actions/checkout@v5
     - uses: actions/setup-node@v5
       with:
-        node-version: lts/*
+        node-version: 24
     - name: Install dependencies
       run: npm ci
     - name: Install Playwright Browsers
@@ -21,8 +23,10 @@ jobs:
       run: npm run test:ci
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
-        TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
+        TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
         TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+        TEST_USER_FULL_NAME: ${{ secrets.TEST_USER_FULL_NAME }}
+        TEST_USER_PHONE: ${{ secrets.TEST_USER_PHONE }}
     - uses: actions/upload-artifact@v5
       if: ${{ !cancelled() }}
       with:
