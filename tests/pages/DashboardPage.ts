@@ -43,30 +43,10 @@ export class DashboardPage {
     return actualBalance;
   }
   
-  async clickPersonalDetails()
+  async clickPersonalDetails(timeoutMs = 10000)
   {
     await this.personalDetailsLink.click();
-  }
-
-  async verifyContactDetails(userEmail: string, userFullName: string, userPhone: string, timeoutMs = 30000)
-  {
-    const heading = this.page.getByText('Your contact details', { exact: false }).first();
-    await heading.waitFor({ state: 'visible', timeout: timeoutMs });
-
-    const card = heading.locator('xpath=ancestor::*[self::section or self::div][1]');
-    await card.waitFor({ state: 'visible', timeout: timeoutMs });
-
-    await card.getByText(userFullName, { exact: false }).waitFor({ state: 'visible', timeout: timeoutMs });
-    console.log(`[DashboardPage] Full name found: '${userFullName}'`);
-
-    await card.getByText(userEmail, { exact: false }).waitFor({ state: 'visible', timeout: timeoutMs });
-    console.log(`[DashboardPage] Email found: '${userEmail}'`);
-
-    const phonePattern = new RegExp(userPhone.replace(/\*/g, '\\*+').replace(/\s+/g, '\\s*'));
-    await card.getByText(phonePattern).waitFor({ state: 'visible', timeout: timeoutMs });
-    console.log(`[DashboardPage] Phone found (pattern): '${phonePattern.source}'`);
-
-    console.log(`[DashboardPage] Contact details verified. email='${userEmail}', fullName='${userFullName}', phone='${userPhone}'`);
+    await this.page.waitForLoadState('domcontentloaded', { timeout: timeoutMs });
   }
 
   }

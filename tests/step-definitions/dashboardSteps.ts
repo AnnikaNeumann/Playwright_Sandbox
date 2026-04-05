@@ -1,4 +1,5 @@
 import { DashboardPage } from '../pages/DashboardPage';
+import { PersonalDetailsPage } from '../pages/PersonalDetailsPage';
 import { Given, When, Then } from '@cucumber/cucumber';
 import { CustomWorld } from '../support/world';
 
@@ -31,6 +32,6 @@ Then('I verify users contact details are displayed on the personal details page'
   if (!userFullName) throw new Error('TEST_USER_FULL_NAME is not set. Provide it in .env locally or as a GitHub Actions secret in CI.');
   if (!userPhone) throw new Error('TEST_USER_PHONE is not set. Provide it in .env locally or as a GitHub Actions secret in CI.');
 
-  const dashboardPage = getDashboardPage(this);
-  await dashboardPage.verifyContactDetails(userEmail, userFullName, userPhone, 30000);
+  const personalDetailsPage = new PersonalDetailsPage(this.page);
+  await personalDetailsPage.verifyContactDetails(userEmail, userFullName, userPhone, 30000);
 });
