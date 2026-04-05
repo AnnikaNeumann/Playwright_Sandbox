@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1330050099
+              "duration": 700488499
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 4703632200
+              "duration": 3635970800
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1265214400
+              "duration": 1127366800
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3664175100
+              "duration": 3512830300
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 9704107799
+              "duration": 7350696099
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 66287799
+              "duration": 81222000
             }
           },
           {
@@ -88,11 +88,11 @@
             "line": 13,
             "name": "I click 'Personal details'",
             "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:22"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:26"
             },
             "result": {
               "status": "passed",
-              "duration": 1143173800
+              "duration": 1534670099
             }
           },
           {
@@ -101,11 +101,11 @@
             "line": 14,
             "name": "I verify users contact details are displayed on the personal details page",
             "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:26"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:35"
             },
             "result": {
               "status": "passed",
-              "duration": 820820100
+              "duration": 1559096900
             }
           },
           {
@@ -113,7 +113,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1030269299
+              "duration": 770993500
             }
           }
         ],
