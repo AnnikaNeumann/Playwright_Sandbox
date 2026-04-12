@@ -4,17 +4,17 @@
     "elements": [
       {
         "description": "",
-        "id": "octopus-energy-dashboard;verify-energy-balance-is-displayed-on-the-dashboard",
+        "id": "personal-details-page;verify-personal-details-are-displayed",
         "keyword": "Scenario",
         "line": 11,
-        "name": "Verify energy balance is displayed on the dashboard",
+        "name": "Verify personal details are displayed",
         "steps": [
           {
             "keyword": "Before",
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 596328499
+              "duration": 767038700
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 5037432000
+              "duration": 6496688899
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1150265900
+              "duration": 1344817900
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 3577487999
+              "duration": 6441108600
             }
           },
           {
@@ -66,46 +66,46 @@
             },
             "result": {
               "status": "passed",
-              "duration": 10120532799
-            }
-          },
-          {
-            "arguments": [],
-            "keyword": "Then ",
-            "line": 12,
-            "name": "I verify the users energy balance '£55.59' is displayed on the dashboard",
-            "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:17"
-            },
-            "result": {
-              "status": "passed",
-              "duration": 28959200
+              "duration": 14640902799
             }
           },
           {
             "arguments": [],
             "keyword": "When ",
-            "line": 13,
+            "line": 12,
             "name": "I click 'Personal details'",
             "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:26"
+              "location": "tests\\step-definitions\\dashboardSteps.ts:22"
             },
             "result": {
               "status": "passed",
-              "duration": 1062095699
+              "duration": 1333270599
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 13,
+            "name": "I verify users contact details are displayed",
+            "match": {
+              "location": "tests\\step-definitions\\personalDetailsSteps.ts:5"
+            },
+            "result": {
+              "status": "passed",
+              "duration": 1504690300
             }
           },
           {
             "arguments": [],
             "keyword": "Then ",
             "line": 14,
-            "name": "I verify users contact details are displayed on the personal details page",
+            "name": "I verify the users communication preferences are displayed on the personal details page",
             "match": {
-              "location": "tests\\step-definitions\\dashboardSteps.ts:34"
+              "location": "tests\\step-definitions\\personalDetailsSteps.ts:18"
             },
             "result": {
               "status": "passed",
-              "duration": 1082567100
+              "duration": 254469599
             }
           },
           {
@@ -113,7 +113,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 598768000
+              "duration": 1110908400
             }
           }
         ],
@@ -123,23 +123,23 @@
             "line": 1
           },
           {
-            "name": "@dashboard",
+            "name": "@personalDetails",
             "line": 10
           }
         ],
         "type": "scenario"
       }
     ],
-    "id": "octopus-energy-dashboard",
+    "id": "personal-details-page",
     "line": 2,
     "keyword": "Feature",
-    "name": "Octopus Energy Dashboard",
+    "name": "Personal Details Page",
     "tags": [
       {
         "name": "@regression",
         "line": 1
       }
     ],
-    "uri": "tests\\feature-files\\dashboard.feature"
+    "uri": "tests\\feature-files\\personalDetails.feature"
   }
 ]

@@ -3,7 +3,7 @@ import { Page, Locator } from 'playwright';
 export class DashboardPage {
   readonly page: Page;
   readonly accountHeading: Locator;
-  readonly personalDetailsLink: Locator;
+    readonly personalDetailsLink: Locator;
 
   constructor(page: Page) 
   {

@@ -1,10 +1,16 @@
-import { Page } from 'playwright';
+import { Locator, Page } from 'playwright';
+import { expect } from '@playwright/test';
 
 export class PersonalDetailsPage {
   readonly page: Page;
+    readonly personalDetailsLink: Locator;
+    readonly communicationPreferencesLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
+        this.personalDetailsLink = page.getByText('Personal details');
+        this.communicationPreferencesLink = page.getByText('Your communication preferences');
+
   }
 
   async verifyContactDetails(userEmail: string, userFullName: string, userPhone: string, timeoutMs = 30000) {
@@ -14,7 +20,6 @@ export class PersonalDetailsPage {
       return this.page.waitForLoadState('domcontentloaded');
     });
 
-    // Wait for the contact details heading to confirm we're on the right page
     const heading = this.page.getByText('Your contact details', { exact: false }).first();
     await heading.waitFor({ state: 'visible', timeout: timeoutMs });
     console.log('[PersonalDetailsPage] Contact details heading found, verifying values...');
@@ -34,4 +39,30 @@ export class PersonalDetailsPage {
 
     console.log(`[PersonalDetailsPage] Contact details verified. email='${userEmail}', fullName='${userFullName}', phone='${userPhone}'`);
   }
-}
+
+  async verifyCommunicationPreferences(timeoutMs = 30000) {
+  const heading = this.page.getByText('Your communication preferences', { exact: false }).first();
+  await heading.waitFor({ state: 'visible', timeout: timeoutMs });
+
+  // Go up to the nearest section/card ancestor, then find ul inside it
+  const card = heading.locator('xpath=ancestor::div[2]');
+  const bulletList = card.locator('ul');
+  await bulletList.waitFor({ state: 'visible', timeout: timeoutMs });
+
+  const expectedPreferences = [
+    'You are currently opted in to receive our recommended emails',
+    'You are currently opted in to receive some marketing emails from us',
+    'You are currently opted out of meter reading confirmation emails',
+    'You get emails from us in HTML format',
+    'We send you emails in our usual style',
+    'Your emails use our usual font size'
+  ];
+
+  const listItems = bulletList.locator('li');
+  await expect(listItems).toHaveCount(expectedPreferences.length);
+
+  for (let i = 0; i < expectedPreferences.length; i++) {
+    await expect(listItems.nth(i)).toContainText(expectedPreferences[i]);
+  }
+  console.log('[PersonalDetailsPage] Communication preferences verified.');
+}}

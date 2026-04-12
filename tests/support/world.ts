@@ -23,6 +23,7 @@ export class CustomWorld extends World {
       slowMo: headless ? 0 : 800,
     });
     this.context = await this.browser.newContext();
+    await this.context.tracing.start({ screenshots: true, snapshots: true, sources: true });
     this.page = await this.context.newPage();
   }
 

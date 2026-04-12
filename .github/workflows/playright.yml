@@ -34,5 +34,6 @@ jobs:
         path: |
           cucumber-report.html
           tests/cucumber.json
+          test-results/
         if-no-files-found: warn
         retention-days: 30
