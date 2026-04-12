@@ -14,7 +14,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 767038700
+              "duration": 621843000
             }
           },
           {
@@ -27,7 +27,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6496688899
+              "duration": 7800536500
             }
           },
           {
@@ -40,7 +40,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1344817900
+              "duration": 1178770000
             }
           },
           {
@@ -53,7 +53,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 6441108600
+              "duration": 6770604299
             }
           },
           {
@@ -66,7 +66,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 14640902799
+              "duration": 11392673300
             }
           },
           {
@@ -79,7 +79,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1333270599
+              "duration": 1228054199
             }
           },
           {
@@ -92,7 +92,7 @@
             },
             "result": {
               "status": "passed",
-              "duration": 1504690300
+              "duration": 30144926199
             }
           },
           {
@@ -105,7 +105,21 @@
             },
             "result": {
               "status": "passed",
-              "duration": 254469599
+              "duration": 232777600
+            }
+          },
+          {
+            "arguments": [],
+            "keyword": "When ",
+            "line": 15,
+            "name": "I click Edit button on the communication pref card",
+            "match": {
+              "location": "tests\\step-definitions\\personalDetailsSteps.ts:23"
+            },
+            "result": {
+              "status": "failed",
+              "duration": 30005842699,
+              "error_message": "Error: function timed out, ensure the promise resolves within 30000 milliseconds\n    at Timeout.<anonymous> (C:\\Users\\sasse\\Playwright_Sandbox\\node_modules\\@cucumber\\cucumber\\src\\time.ts:52:14)\n    at listOnTimeout (node:internal/timers:605:17)\n    at processTimers (node:internal/timers:541:7)"
             }
           },
           {
@@ -113,7 +127,7 @@
             "hidden": true,
             "result": {
               "status": "passed",
-              "duration": 1110908400
+              "duration": 1568229599
             }
           }
         ],

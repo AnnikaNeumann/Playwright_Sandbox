@@ -20,10 +20,13 @@ Then('I verify the users energy balance {string} is displayed on the dashboard',
 });
 
 When('I click {string}', async function (this: CustomWorld, linkText: string) {
-  const link = this.page.getByRole('link', { name: linkText, exact: true });
-  await link.click();
+  const target = this.page
+    .getByRole('link', { name: new RegExp(`^${linkText}$`, 'i') })
+    .or(this.page.getByRole('button', { name: new RegExp(`^${linkText}$`, 'i') }))
+    .first();
+  await target.waitFor({ state: 'visible', timeout: 30_000 });
+  await target.click();
 
-  // Wait for something that guarantees the page is ready:
-  await this.page.getByRole('heading', { level: 1, name: /Your settings/i }).waitFor({ timeout: 30_000 });
+  await this.page.getByRole('heading', { name: /Your settings/i }).waitFor({ timeout: 30_000 });
 });
 

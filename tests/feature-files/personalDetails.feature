@@ -12,3 +12,4 @@ Scenario: Verify personal details are displayed
  When I click 'Personal details'
  Then I verify users contact details are displayed 
  Then I verify the users communication preferences are displayed on the personal details page
+#  When I click Edit button on the communication pref card

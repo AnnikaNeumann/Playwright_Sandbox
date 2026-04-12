@@ -3,13 +3,13 @@ import { expect } from '@playwright/test';
 
 export class PersonalDetailsPage {
   readonly page: Page;
-    readonly personalDetailsLink: Locator;
-    readonly communicationPreferencesLink: Locator;
+  readonly personalDetailsLink: Locator;
+  readonly communicationPreferencesLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
-        this.personalDetailsLink = page.getByText('Personal details');
-        this.communicationPreferencesLink = page.getByText('Your communication preferences');
+    this.personalDetailsLink = page.getByText('Personal details');
+    this.communicationPreferencesLink = page.getByText('Your communication preferences');
 
   }
 
@@ -65,4 +65,21 @@ export class PersonalDetailsPage {
     await expect(listItems.nth(i)).toContainText(expectedPreferences[i]);
   }
   console.log('[PersonalDetailsPage] Communication preferences verified.');
-}}
+  }
+
+  async clickEditButtonOnCommunicationPreferences(timeoutMs = 30000) {
+    const heading = this.page.getByText('Your communication preferences', { exact: false }).first();
+    await heading.waitFor({ state: 'visible', timeout: timeoutMs });
+
+    let card = heading.locator('xpath=ancestor::*[self::section or self::article][1]').first();
+    if ((await card.count()) === 0) {
+      // Fallback for pages that use div-only card wrappers
+      card = heading.locator('xpath=ancestor::div[1]').first();
+    }
+
+    const editButton = card.getByRole('button', { name: 'Edit', exact: true }).first();
+    await editButton.waitFor({ state: 'visible', timeout: timeoutMs });
+    await editButton.scrollIntoViewIfNeeded();
+    await editButton.click({ timeout: timeoutMs });
+  }
+}

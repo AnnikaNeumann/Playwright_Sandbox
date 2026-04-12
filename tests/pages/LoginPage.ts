@@ -15,7 +15,7 @@ export class LoginPage {
     this.passwordInput = page.locator('input[type="password"]');
     this.signInButton = page.locator('button[type="submit"]');
     this.errorMessage = page.locator('[class*="error"], [class*="alert"]');
-    this.loginButton = page.locator('div[class*="coralHeader-actions-dynamic"]');
+    this.loginButton = page.getByRole('link', { name: /log in|login/i }).first();
     this.logoutButton = page.locator('form[id="logout-form"] [type="submit"]');
   }
 
@@ -29,6 +29,7 @@ export class LoginPage {
   }
 
   async clickLoginButton() {
+    await this.loginButton.waitFor({ state: 'visible', timeout: 30000 });
     await this.loginButton.click();
   }
 
@@ -43,7 +44,7 @@ export class LoginPage {
   }
 
   async redirectionToDashboard(timeoutMs = 10000) {
-    await this.page.waitForURL(/\/dashboard\/new\/accounts\/[^/]+\/dashboard$/, { timeout: timeoutMs });
+    await this.page.waitForURL(/\/dashboard\/new\/accounts\/[^/]+\/dashboard(?:\/)?(?:\?.*)?$/, { timeout: timeoutMs });
     await this.page.getByText('Hi Annika').waitFor({ state: 'visible', timeout: timeoutMs });
   }
 

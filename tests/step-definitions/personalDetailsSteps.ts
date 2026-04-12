@@ -1,4 +1,4 @@
-import { Then } from '@cucumber/cucumber';
+import { When, Then } from '@cucumber/cucumber';
 import { CustomWorld } from '../support/world';
 import { PersonalDetailsPage } from '../pages/PersonalDetailsPage';
 
@@ -18,4 +18,9 @@ Then('I verify users contact details are displayed', {timeout: 60_000}, async fu
 Then('I verify the users communication preferences are displayed on the personal details page', async function (this: CustomWorld) {
   const personalDetailsPage = new PersonalDetailsPage(this.page);
   await personalDetailsPage.verifyCommunicationPreferences(30000);
+});
+
+When('I click Edit button on the communication pref card', async function (this: CustomWorld) {
+  const personalDetailsPage = new PersonalDetailsPage(this.page);
+  await personalDetailsPage.clickEditButtonOnCommunicationPreferences(30000);
 });
