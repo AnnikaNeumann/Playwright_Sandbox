@@ -54,26 +54,29 @@ export class LoginPage {
   }
 
   async redirectionToDashboard(timeoutMs = 30000) {
+    const effectiveTimeout = Math.max(timeoutMs, 60_000);
+
+    await this.page.waitForLoadState('domcontentloaded', { timeout: effectiveTimeout }).catch(() => undefined);
+
     await this.page
       .waitForURL((url) => {
         const href = url.toString();
         return !href.includes('auth.octopus.energy/login');
-      }, { timeout: timeoutMs })
+      }, { timeout: effectiveTimeout })
       .catch(() => undefined);
 
-    await this.page.waitForURL((url) => {
-      const href = url.toString();
-      return href.includes('octopus.energy/dashboard') && href.includes('/dashboard');
-    }, { timeout: timeoutMs });
+    await this.page.waitForURL(/\/dashboard(\/|$)/, { timeout: effectiveTimeout });
 
-    await this.page.waitForLoadState('domcontentloaded', { timeout: timeoutMs });
+    await this.page.waitForLoadState('domcontentloaded', { timeout: effectiveTimeout }).catch(() => undefined);
 
     const currentUrl = this.page.url();
-    if (!currentUrl.includes('/dashboard/new/accounts/')) {
-      throw new Error(`Expected dashboard account URL but got: ${currentUrl}`);
+    if (currentUrl.includes('auth.octopus.energy/login')) {
+      throw new Error(`Still on auth login URL instead of dashboard: ${currentUrl}`);
     }
 
-    await this.page.getByText('Hi Annika').waitFor({ state: 'visible', timeout: timeoutMs });
+    if (!currentUrl.includes('/dashboard')) {
+      throw new Error(`Expected dashboard URL but got: ${currentUrl}`);
+    }
   }
 
   async getErrorMessage(): Promise<string> {

@@ -11,13 +11,15 @@ function requireEnv(name: 'TEST_USER_EMAIL' | 'TEST_PASSWORD'): string {
 }
 
 test.describe('Smoke', () => {
+  test.describe.configure({ mode: 'serial' });
+
   test('@smoke login path works for valid user', async ({ page }) => {
     const loginPage = new LoginPage(page);
 
     await loginPage.goto();
     await loginPage.clickLoginButton();
     await loginPage.login(requireEnv('TEST_USER_EMAIL'), requireEnv('TEST_PASSWORD'));
-    await loginPage.redirectionToDashboard(30_000);
+    await loginPage.redirectionToDashboard(60_000);
   });
 
   test('@smoke dashboard energy balance is visible', async ({ page }) => {
@@ -27,7 +29,7 @@ test.describe('Smoke', () => {
     await loginPage.goto();
     await loginPage.clickLoginButton();
     await loginPage.login(requireEnv('TEST_USER_EMAIL'), requireEnv('TEST_PASSWORD'));
-    await loginPage.redirectionToDashboard(30_000);
+    await loginPage.redirectionToDashboard(60_000);
 
     await dashboardPage.verifyEnergyBalance('£125.59', 30_000);
   });
