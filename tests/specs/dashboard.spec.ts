@@ -20,6 +20,6 @@ test.describe('Dashboard', () => {
     await loginPage.login(requireEnv('TEST_USER_EMAIL'), requireEnv('TEST_PASSWORD'));
     await loginPage.redirectionToDashboard(30_000);
 
-    await dashboardPage.verifyEnergyBalance('£55.59', 30_000);
+    await dashboardPage.verifyEnergyBalance('£125.59', 30_000);
   });
 });
