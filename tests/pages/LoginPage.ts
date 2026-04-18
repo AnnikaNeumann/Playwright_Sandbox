@@ -65,7 +65,7 @@ export class LoginPage {
       }, { timeout: effectiveTimeout })
       .catch(() => undefined);
 
-    await this.page.waitForURL(/\/dashboard(\/|$)/, { timeout: effectiveTimeout });
+    await this.page.waitForURL(/\/dashboard(\/?$)/, { timeout: effectiveTimeout });
 
   await this.page.waitForLoadState('domcontentloaded', { timeout: effectiveTimeout }).catch(() => undefined);
 
