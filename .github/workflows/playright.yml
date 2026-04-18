@@ -19,7 +19,7 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install chromium --with-deps
-    - name: Run Cucumber tests (headless)
+    - name: Run Playwright tests (headless)
       run: npm run test:ci
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
@@ -30,10 +30,9 @@ jobs:
     - uses: actions/upload-artifact@v5
       if: ${{ !cancelled() }}
       with:
-        name: cucumber-report
+        name: playwright-report
         path: |
-          cucumber-report.html
-          tests/cucumber.json
+          playwright-report/
           test-results/
         if-no-files-found: warn
         retention-days: 30

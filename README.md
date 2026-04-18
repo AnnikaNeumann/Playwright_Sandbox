@@ -1,6 +1,6 @@
 # Playwright Sandbox
 
-Practical Playwright learning project built by levering VS Code built-in AI features alongside my daily Selenium + C# work to level up with modern TypeScript, Cucumber BDD, and CI-ready UI test automation.
+Practical Playwright learning project focused on the native Playwright Test runner and TypeScript, using page objects and CI-ready E2E flows.
 
 ## Why this project
 
@@ -9,15 +9,14 @@ I use Selenium and C# in my day-to-day role, and this repository is my hands-on 
 The goal is to practice production-style test design with:
 
 - Page Object Model structure
-- Cucumber BDD scenarios and step definitions
-- Selective execution by tags, scenario name, and feature line
+- Native Playwright specs and test grouping
+- Selective execution by grep tags and file targeting
 - CI-friendly test organization
 
 
 ## Tech stack
 
 - Playwright
-- Cucumber.js
 - TypeScript
 - Node.js
 - dotenv
@@ -30,36 +29,34 @@ Install dependencies:
 npm install
 ```
 
-Run all scenarios:
+Run all tests:
 
 ```bash
 npm test
 ```
 
-Run one feature file:
+Run headed mode:
 
 ```bash
-npm run test:feature
+npm run test:headed
 ```
 
-Run one scenario by name:
-
-```bash
-npm run test:scenario -- "Successful login with valid credentials"
-```
-
-Run by tag:
+Run smoke tests:
 
 ```bash
 npm run test:smoke
-npm run test:regression
-npm run test:negative
 ```
 
-Run by line:
+Run a single spec file:
 
 ```bash
-npm run test:line -- "tests/feature-files/login.feature:4"
+npx playwright test tests/specs/login.spec.ts
+```
+
+Open the HTML report:
+
+```bash
+npm run show-report
 ```
 
 ## Environment setup
@@ -75,7 +72,7 @@ Create a `.env` file for local execution and add required values such as:
 ## Current focus
 
 - Strengthen Playwright fundamentals with reliable E2E flows
-- Keep test code maintainable through page objects and reusable steps
+- Keep test code maintainable through page objects and focused specs
 - Prepare a clean structure for CI pipeline integration
 
 ## Roadmap

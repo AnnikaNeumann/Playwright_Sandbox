@@ -4,17 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js",
-    "test:headed": "cross-env PW_HEADED=true cucumber-js",
-    "test:ci": "cross-env CI=true PW_HEADLESS=true cucumber-js",
-    "test:debug": "node --inspect-brk node_modules/@cucumber/cucumber/bin/cucumber.js --config cucumber.js",
-    "test:feature": "cucumber-js tests/feature-files/login.feature",
-    "test:scenario": "cucumber-js --config cucumber.single.js tests/feature-files/**/*.feature --name",
-    "test:tags": "cucumber-js --config cucumber.single.js tests/feature-files/**/*.feature --tags",
-    "test:line": "cucumber-js --config cucumber.single.js",
-    "test:smoke": "cucumber-js --tags @smoke",
-    "test:regression": "cucumber-js --tags @regression",
-    "test:negative": "cucumber-js --tags @negative"
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:ci": "cross-env CI=true playwright test",
+    "test:smoke": "playwright test --grep @smoke",
+    "test:debug": "playwright test --debug",
+    "show-report": "playwright show-report"
   },
   "keywords": [],
   "author": "",
@@ -25,10 +20,6 @@
     "@types/dotenv": "^6.1.1",
     "@types/node": "^25.5.0",
     "cross-env": "^7.0.3",
-    "dotenv": "^17.4.0",
-    "ts-node": "^10.9.2"
-  },
-  "dependencies": {
-    "@cucumber/cucumber": "^12.7.0"
+    "dotenv": "^17.4.0"
   }
 }

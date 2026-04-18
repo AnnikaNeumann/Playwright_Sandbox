@@ -43,30 +43,36 @@ export class LoginPage {
     }
   }
 
-  async clickLogoutButton(){
+  async clickLogoutButton() {
     await this.logoutButton.click();
   }
 
-    async login(email: string, password: string) {
+  async login(email: string, password: string) {
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
     await this.signInButton.click();
   }
 
-  async redirectionToDashboard(timeoutMs = 10000) {
-    // Wait for navigation to complete first
-    await this.page.waitForLoadState('networkidle', { timeout: timeoutMs }).catch(() => {
-      // If networkidle times out, fall back to domcontentloaded
-      return this.page.waitForLoadState('domcontentloaded');
-    });
+  async redirectionToDashboard(timeoutMs = 30000) {
+    await this.page
+      .waitForURL((url) => {
+        const href = url.toString();
+        return !href.includes('auth.octopus.energy/login');
+      }, { timeout: timeoutMs })
+      .catch(() => undefined);
 
-    // Check URL contains dashboard path (less strict for CI variants)
+    await this.page.waitForURL((url) => {
+      const href = url.toString();
+      return href.includes('octopus.energy/dashboard') && href.includes('/dashboard');
+    }, { timeout: timeoutMs });
+
+    await this.page.waitForLoadState('domcontentloaded', { timeout: timeoutMs });
+
     const currentUrl = this.page.url();
-    if (!currentUrl.includes('/dashboard')) {
-      throw new Error(`Expected dashboard URL but got: ${currentUrl}`);
+    if (!currentUrl.includes('/dashboard/new/accounts/')) {
+      throw new Error(`Expected dashboard account URL but got: ${currentUrl}`);
     }
 
-    // Wait for greeting to appear
     await this.page.getByText('Hi Annika').waitFor({ state: 'visible', timeout: timeoutMs });
   }
 
