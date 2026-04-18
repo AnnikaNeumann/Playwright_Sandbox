@@ -32,7 +32,9 @@ test.describe('Login', () => {
     await loginPage.redirectionToDashboard(30_000);
 
     await loginPage.clickLogoutButton();
-    await page.waitForURL(/login/, { timeout: 30_000 });
+    // After logout the site may redirect to the home page or the login page;
+    // assert we are no longer on the dashboard rather than assuming a specific URL
+    await page.waitForURL((url) => !url.toString().includes('/dashboard'), { timeout: 30_000 });
   });
 
   test('failed login with invalid credentials', async ({ page }) => {

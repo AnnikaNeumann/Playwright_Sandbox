@@ -54,7 +54,7 @@ export class LoginPage {
   }
 
   async redirectionToDashboard(timeoutMs = 30000) {
-    const effectiveTimeout = Math.max(timeoutMs, 60_000);
+    const effectiveTimeout = timeoutMs;
 
     await this.page.waitForLoadState('domcontentloaded', { timeout: effectiveTimeout }).catch(() => undefined);
 
@@ -67,17 +67,17 @@ export class LoginPage {
 
     await this.page.waitForURL(/\/dashboard(\/|$)/, { timeout: effectiveTimeout });
 
-    await this.page.waitForLoadState('domcontentloaded', { timeout: effectiveTimeout }).catch(() => undefined);
+  await this.page.waitForLoadState('domcontentloaded', { timeout: effectiveTimeout }).catch(() => undefined);
 
-    const currentUrl = this.page.url();
-    if (currentUrl.includes('auth.octopus.energy/login')) {
-      throw new Error(`Still on auth login URL instead of dashboard: ${currentUrl}`);
-    }
-
-    if (!currentUrl.includes('/dashboard')) {
-      throw new Error(`Expected dashboard URL but got: ${currentUrl}`);
-    }
+  const currentUrl = this.page.url();
+  if (currentUrl.includes('auth.octopus.energy/login')) {
+    throw new Error(`Still on auth login URL instead of dashboard: ${currentUrl}`);
   }
+
+  if (!currentUrl.includes('/dashboard')) {
+    throw new Error(`Expected dashboard URL but got: ${currentUrl}`);
+  }
+}
 
   async getErrorMessage(): Promise<string> {
     await this.errorMessage.waitFor({ state: 'visible' });

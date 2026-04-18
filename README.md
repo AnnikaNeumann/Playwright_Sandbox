@@ -35,6 +35,12 @@ Run all tests:
 npm test
 ```
 
+Run all tests with a custom worker count (useful for live sites that rate-limit):
+
+```bash
+$env:PW_WORKERS=1; npx playwright test
+```
+
 Run headed mode:
 
 ```bash

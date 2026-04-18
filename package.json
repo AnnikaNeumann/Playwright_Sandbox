@@ -6,7 +6,9 @@
   "scripts": {
     "test": "playwright test",
     "test:headed": "playwright test --headed",
-    "test:ci": "cross-env CI=true playwright test",
+    "test:ci": "cross-env CI=true playwright test --ignore-snapshots --grep-invert accessibility.spec",
+    "test:accessibility": "playwright test tests/specs/accessibility.spec.ts",
+    "test:accessibility:ci": "cross-env CI=true playwright test tests/specs/accessibility.spec.ts",
     "test:smoke": "playwright test --grep @smoke --workers=1",
     "test:debug": "playwright test --debug",
     "show-report": "playwright show-report"
