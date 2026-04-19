@@ -38,10 +38,15 @@ async function assertInputsHaveAccessibleNames(
         }
 
         const hasAccessibleNameSignal = await input.evaluate((node) => {
-            const element = node as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+            const element = node as {
+                closest: (selector: string) => unknown;
+                getAttribute: (name: string) => string | null;
+                labels?: { length: number } | null;
+                ownerDocument?: { getElementById: (id: string) => { textContent?: string | null } | null };
+            };
 
             const wrappedByLabel = !!element.closest('label');
-            const labels = (element as any).labels as NodeListOf<HTMLLabelElement> | null;
+            const labels = element.labels ?? null;
             const hasDomLabel = !!labels && labels.length > 0;
 
             const ariaLabel = element.getAttribute('aria-label')?.trim();
@@ -52,8 +57,8 @@ async function assertInputsHaveAccessibleNames(
             let hasAriaLabelledByText = false;
             if (ariaLabelledBy) {
                 const ids = ariaLabelledBy.split(/\s+/).filter(Boolean);
-                hasAriaLabelledByText = ids.some((id) => {
-                    const labelNode = document.getElementById(id);
+                hasAriaLabelledByText = ids.some((id: string) => {
+                    const labelNode = element.ownerDocument?.getElementById(id) ?? null;
                     return !!labelNode?.textContent?.trim();
                 });
             }
