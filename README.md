@@ -69,7 +69,7 @@ npm run show-report
 
 Create a `.env` file for local execution and add required values such as:
 
-- `BASE_URL`
+- `BASE_URL` (optional, defaults to `https://posteo.de/en`; non-Posteo values are ignored by the shared login page object)
 - `TEST_USER_EMAIL`
 - `TEST_PASSWORD`
 - `TEST_USER_FULL_NAME`
@@ -78,6 +78,7 @@ Create a `.env` file for local execution and add required values such as:
 ## Current focus
 
 - Strengthen Playwright fundamentals with reliable E2E flows
+- Exercise Posteo login and related webmail flows as the primary live-site target
 - Keep test code maintainable through page objects and focused specs
 - Prepare a clean structure for CI pipeline integration
 

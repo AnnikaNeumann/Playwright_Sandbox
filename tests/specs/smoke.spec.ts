@@ -1,5 +1,4 @@
 import { test } from '@playwright/test';
-import { DashboardPage } from '../pages/DashboardPage';
 import { LoginPage } from '../pages/LoginPage';
 
 function requireEnv(name: 'TEST_USER_EMAIL' | 'TEST_PASSWORD'): string {
@@ -19,18 +18,7 @@ test.describe('Smoke', () => {
     await loginPage.goto();
     await loginPage.clickLoginButton();
     await loginPage.login(requireEnv('TEST_USER_EMAIL'), requireEnv('TEST_PASSWORD'));
-    await loginPage.redirectionToDashboard(60_000);
+    await loginPage.displayedWebmail(60_000);
   });
 
-  test('@smoke dashboard energy balance is visible', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const dashboardPage = new DashboardPage(page);
-
-    await loginPage.goto();
-    await loginPage.clickLoginButton();
-    await loginPage.login(requireEnv('TEST_USER_EMAIL'), requireEnv('TEST_PASSWORD'));
-    await loginPage.redirectionToDashboard(60_000);
-
-    await dashboardPage.verifyEnergyBalance('£125.59', 30_000);
-  });
 });

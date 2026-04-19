@@ -1,54 +1,70 @@
-import { Page, Locator } from 'playwright';
+import { Locator, Page } from 'playwright';
 
 export class DashboardPage {
+  static readonly DEFAULT_BASE_URL = 'https://posteo.de/en';
+
   readonly page: Page;
-  readonly accountHeading: Locator;
-    readonly personalDetailsLink: Locator;
+  readonly posteoLogo: Locator;
+  readonly emailInput: Locator;
+  readonly passwordInput: Locator;
+  readonly languageSwitch: Locator;
+  readonly germanLanguageOption: Locator;
+  readonly frenchLanguageOption: Locator;
+  readonly spanishLanguageOption: Locator;
 
-  constructor(page: Page) 
-  {
+  constructor(page: Page) {
     this.page = page;
-    this.accountHeading = page.getByText('Hi Annika');
-    this.personalDetailsLink = page.getByText('Personal details');
+    this.posteoLogo = page.getByAltText('Posteo');
+    this.emailInput = page.getByLabel(/^email$/i).or(page.getByPlaceholder(/^(email|e-mail-address|e-mail-adresse)$/i)).first();
+    this.passwordInput = page.getByLabel(/^(password|passwort)$/i).or(page.getByPlaceholder(/^(password|passwort)$/i)).first();
+    this.languageSwitch = page.locator('nav[aria-label="Language Switch"]');
+    this.germanLanguageOption = this.languageSwitch.locator('li.p_lang-switch', {
+      has: page.locator('a[lang="de"][href*="/de"]'),
+    }).first();
+    this.frenchLanguageOption = this.languageSwitch.locator('li.p_lang-switch', {
+      has: page.locator('a[lang="fr"][href*="/fr"]'),
+    }).first();
+    this.spanishLanguageOption = this.languageSwitch.locator('li.p_lang-switch', {
+      has: page.locator('a[lang="es"][href*="/es"]'),
+    }).first();
   }
 
-    async redirectionToDashboard(timeoutMs = 10000) 
-    {
-    await this.accountHeading.waitFor({ state: 'visible', timeout: timeoutMs });
+  async goto() {
+    const configuredBaseUrl = process.env.BASE_URL?.trim();
+    const baseUrl = !configuredBaseUrl || !configuredBaseUrl.includes('posteo.de')
+      ? DashboardPage.DEFAULT_BASE_URL
+      : configuredBaseUrl;
+
+    await this.page.goto(baseUrl);
   }
 
-  async verifyEnergyBalance(expectedBalance: string, timeoutMs = 10000): Promise<string>
-  {
-    console.log(`[DashboardPage] Checking energy balance. expected='${expectedBalance}'`);
-    const energyBalance = this.page.getByText(expectedBalance, { exact: true });
-    try {
-      await energyBalance.waitFor({ state: 'visible', timeout: timeoutMs });
-    } catch (error) {
-      const bodyText = await this.page.locator('body').innerText();
-      const firstDetectedCurrency = bodyText.match(/£\s*\d+[.,]\d{2}/)?.[0] ?? 'none';
-      console.log(
-        `[DashboardPage] Balance element not found. expected='${expectedBalance}', firstDetectedCurrency='${firstDetectedCurrency}'`
+  async displayedDashboard(timeoutMs = 30000) {
+    await this.posteoLogo.waitFor({ state: 'visible', timeout: timeoutMs });
+    await this.emailInput.waitFor({ state: 'visible', timeout: timeoutMs });
+    await this.passwordInput.waitFor({ state: 'visible', timeout: timeoutMs });
+  }
+
+  async verifyLanguageOptions(
+    expected: { de: string; fr: string; es: string },
+    timeoutMs = 30000,
+  ) {
+    await this.languageSwitch.waitFor({ state: 'visible', timeout: timeoutMs });
+    await this.germanLanguageOption.waitFor({ state: 'visible', timeout: timeoutMs });
+    await this.frenchLanguageOption.waitFor({ state: 'visible', timeout: timeoutMs });
+    await this.spanishLanguageOption.waitFor({ state: 'visible', timeout: timeoutMs });
+
+    const germanText = (await this.germanLanguageOption.locator('a').first().innerText()).trim();
+    const frenchText = (await this.frenchLanguageOption.locator('a').first().innerText()).trim();
+    const spanishText = (await this.spanishLanguageOption.locator('a').first().innerText()).trim();
+
+    // Always print the resolved values so they are visible during debug runs.
+    console.log(`[DashboardPage] Language values -> de='${germanText}', fr='${frenchText}', es='${spanishText}'`);
+
+    if (germanText !== expected.de || frenchText !== expected.fr || spanishText !== expected.es) {
+      console.error(
+        `[DashboardPage] Language mismatch. Expected de='${expected.de}', fr='${expected.fr}', es='${expected.es}' but got de='${germanText}', fr='${frenchText}', es='${spanishText}'`
       );
-      throw error;
+      throw new Error('Language option labels do not match expected values.');
     }
-
-    const actualBalance = (await energyBalance.textContent())?.trim() ?? '';
-    if (actualBalance !== expectedBalance) {
-      console.log(`[DashboardPage] Energy balance mismatch. expected='${expectedBalance}', actual='${actualBalance}'`);
-      throw new Error(`Expected energy balance to be '${expectedBalance}', but got '${actualBalance}'`);
-    }
-
-    console.log(`[DashboardPage] Energy balance verified. expected='${expectedBalance}', actual='${actualBalance}'`);
-
-    return actualBalance;
   }
-  
-  async clickPersonalDetails(timeoutMs = 10000)
-  {
-    await this.personalDetailsLink.click();
-    await this.page.waitForLoadState('networkidle', { timeout: timeoutMs }).catch(() => {
-      return this.page.waitForLoadState('domcontentloaded', { timeout: timeoutMs });
-    });
-  }
-
-  }
+}

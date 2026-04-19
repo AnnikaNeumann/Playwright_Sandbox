@@ -1,25 +1,24 @@
 import { test } from '@playwright/test';
 import { DashboardPage } from '../pages/DashboardPage';
-import { LoginPage } from '../pages/LoginPage';
 
-function requireEnv(name: 'TEST_USER_EMAIL' | 'TEST_PASSWORD'): string {
-  const value = process.env[name];
-  if (!value) {
-    throw new Error(`${name} is not set. Provide it in .env locally or as a GitHub Actions secret in CI.`);
-  }
-  return value;
-}
+const expectedLanguageOptions = {
+  de: 'Deutsch',
+  fr: 'Français',
+  es: 'Español',
+};
 
 test.describe('Dashboard', () => {
-  test('verify energy balance is displayed on the dashboard', async ({ page }) => {
-    const loginPage = new LoginPage(page);
+  test('verify the logo is displayed on the dashboard', async ({ page }) => {
     const dashboardPage = new DashboardPage(page);
 
-    await loginPage.goto();
-    await loginPage.clickLoginButton();
-    await loginPage.login(requireEnv('TEST_USER_EMAIL'), requireEnv('TEST_PASSWORD'));
-    await loginPage.redirectionToDashboard(30_000);
+    await dashboardPage.goto();
+    await dashboardPage.displayedDashboard(30_000);
+  });
 
-    await dashboardPage.verifyEnergyBalance('£125.59', 30_000);
+  test('then I verify that \'Deutsch\', \'Français\' and \'Español\' are available as language options', async ({ page }) => {
+    const dashboardPage = new DashboardPage(page);
+
+    await dashboardPage.goto();
+    await dashboardPage.verifyLanguageOptions(expectedLanguageOptions, 30_000);
   });
 });

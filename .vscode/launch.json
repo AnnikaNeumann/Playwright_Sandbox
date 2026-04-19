@@ -4,17 +4,21 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Cucumber Tests (All)",
-      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "name": "Debug Playwright (Current Spec)",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
       "args": [
-        "--config",
-        "cucumber.js"
+        "test",
+        "${file}",
+        "--project=chromium",
+        "--headed",
+        "--workers=1"
       ],
       "runtimeArgs": ["--nolazy"],
       "cwd": "${workspaceFolder}",
       "envFile": "${workspaceFolder}/.env",
       "env": {
-        "PWDEBUG": "0"
+        "PWDEBUG": "1",
+        "DEBUG_LOCATORS": "true"
       },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
@@ -22,19 +26,21 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Dashboard Tag (@dashboard)",
-      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "name": "Debug Playwright (All Specs)",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
       "args": [
-        "--config",
-        "cucumber.js",
-        "--tags",
-        "@dashboard"
+        "test",
+        "tests/specs",
+        "--project=chromium",
+        "--headed",
+        "--workers=1"
       ],
       "runtimeArgs": ["--nolazy"],
       "cwd": "${workspaceFolder}",
       "envFile": "${workspaceFolder}/.env",
       "env": {
-        "PWDEBUG": "0"
+        "PWDEBUG": "1",
+        "DEBUG_LOCATORS": "true"
       },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
@@ -42,19 +48,22 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Cucumber By Tag",
-      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "name": "Debug Playwright (By Grep Tag)",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
       "args": [
-        "--config",
-        "cucumber.js",
-        "--tags",
-        "${input:cucumberTag}"
+        "test",
+        "--grep",
+        "${input:playwrightGrep}",
+        "--project=chromium",
+        "--headed",
+        "--workers=1"
       ],
       "runtimeArgs": ["--nolazy"],
       "cwd": "${workspaceFolder}",
       "envFile": "${workspaceFolder}/.env",
       "env": {
-        "PWDEBUG": "0"
+        "PWDEBUG": "1",
+        "DEBUG_LOCATORS": "true"
       },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
@@ -62,18 +71,21 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Current Feature File",
-      "program": "${workspaceFolder}/node_modules/@cucumber/cucumber/bin/cucumber.js",
+      "name": "Debug Playwright (Dashboard Spec)",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
       "args": [
-        "--config",
-        "cucumber.single.js",
-        "${file}"
+        "test",
+        "tests/specs/dashboard.spec.ts",
+        "--project=chromium",
+        "--headed",
+        "--workers=1"
       ],
       "runtimeArgs": ["--nolazy"],
       "cwd": "${workspaceFolder}",
       "envFile": "${workspaceFolder}/.env",
       "env": {
-        "PWDEBUG": "0"
+        "PWDEBUG": "1",
+        "DEBUG_LOCATORS": "true"
       },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
@@ -81,17 +93,12 @@
   ],
   "inputs": [
     {
-      "id": "cucumberTag",
-      "type": "pickString",
-      "description": "Choose Cucumber tag",
+      "id": "playwrightGrep",
+      "type": "promptString",
+      "description": "Enter Playwright grep pattern (e.g. @smoke|Login)",
       "options": [
-        "@dashboard",
-        "@login",
-        "@smoke",
-        "@regression",
-        "@negative"
       ],
-      "default": "@dashboard"
+      "default": "@smoke"
     }
   ]
 }
