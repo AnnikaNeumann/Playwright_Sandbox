@@ -16,7 +16,7 @@ export class LoginPage {
     this.emailInput = page
       .getByLabel(/^(email|e-mail)$/i)
       .or(page.getByPlaceholder(/^(email|e-mail-address|e-mail-adresse)$/i))
-      .or(page.locator('input[type="email"], input[name="login"], input[name="username"]'))
+      .or(page.locator('input[type="email"], input[name="login"], input[name="username"], input[name*="email" i], input[id*="email" i], input[name*="user" i], input[autocomplete="username"], form[action*="login"] input[type="text"]'))
       .first();
     this.passwordInput = page
       .getByLabel(/^(password|passwort)$/i)
@@ -48,19 +48,47 @@ export class LoginPage {
   }
 
   async clickLoginButton() {
+    await this.page.waitForLoadState('domcontentloaded', { timeout: 30_000 }).catch(() => undefined);
+
+    const genericUserInput = this.page
+      .locator('input:visible:not([type="hidden"]):not([type="password"]):not([type="submit"]):not([type="button"])')
+      .first();
+    const genericPasswordInput = this.page.locator('input:visible[type="password"]').first();
+
     const loginInputsVisible = (await this.emailInput.isVisible().catch(() => false))
       && (await this.passwordInput.isVisible().catch(() => false));
+    const genericInputsVisible = (await genericUserInput.isVisible().catch(() => false))
+      && (await genericPasswordInput.isVisible().catch(() => false));
 
-    if (loginInputsVisible) {
+    if (loginInputsVisible || genericInputsVisible) {
       return;
     }
 
-    await this.loginButton.waitFor({ state: 'visible', timeout: 10_000 });
-    await Promise.all([
-      this.page.waitForURL(/\/login(\?.*)?$/, { timeout: 10_000 }).catch(() => undefined),
-      this.loginButton.click({ force: true }),
-    ]);
-    await this.emailInput.waitFor({ state: 'visible', timeout: 10_000 });
+    const loginButtonVisible = await this.loginButton.isVisible().catch(() => false);
+
+    if (loginButtonVisible) {
+      await Promise.all([
+        this.page.waitForURL(/\/login(\?.*)?$/, { timeout: 30_000 }).catch(() => undefined),
+        this.loginButton.click({ force: true }),
+      ]);
+    } else {
+      // Some variants render the form without a distinct "Login" link.
+      await this.page.waitForLoadState('networkidle', { timeout: 10_000 }).catch(() => undefined);
+    }
+
+    const fallbackEmailInput = this.page
+      .locator('input:visible[type="email"], input:visible[name*="email" i], input:visible[id*="email" i], input:visible[name*="user" i], input:visible[autocomplete="username"], form[action*="login"] input:visible[type="text"], input:visible:not([type="hidden"]):not([type="password"]):not([type="submit"]):not([type="button"])')
+      .first();
+
+    await this.emailInput.waitFor({ state: 'visible', timeout: 30_000 }).catch(async () => {
+      await fallbackEmailInput.waitFor({ state: 'visible', timeout: 10_000 }).catch(async () => {
+        const currentUrl = this.page.url();
+        const pageTitle = await this.page.title().catch(() => 'unknown');
+        throw new Error(
+          `Login form did not become visible. URL: ${currentUrl} | Title: ${pageTitle}`
+        );
+      });
+    });
   }
 
   async clickLogoutButton() {
@@ -77,7 +105,7 @@ export class LoginPage {
         continue;
       }
 
-      await candidate.click({ timeout: 10_000 }).catch(() => undefined);
+      await candidate.click({ timeout: 30_000 }).catch(() => undefined);
       return;
     }
 
@@ -86,8 +114,20 @@ export class LoginPage {
   }
 
   async login(email: string, password: string) {
-    await this.emailInput.fill(email);
-    await this.passwordInput.fill(password);
+    const fallbackEmailInput = this.page
+      .locator('input:visible[type="email"], input:visible[name*="email" i], input:visible[id*="email" i], input:visible[name*="user" i], input:visible[autocomplete="username"], form[action*="login"] input:visible[type="text"], input:visible:not([type="hidden"]):not([type="password"]):not([type="submit"]):not([type="button"])')
+      .first();
+    const fallbackPasswordInput = this.page.locator('input:visible[type="password"]').first();
+
+    const emailTarget = (await this.emailInput.isVisible().catch(() => false))
+      ? this.emailInput
+      : fallbackEmailInput;
+    const passwordTarget = (await this.passwordInput.isVisible().catch(() => false))
+      ? this.passwordInput
+      : fallbackPasswordInput;
+
+    await emailTarget.fill(email);
+    await passwordTarget.fill(password);
     await this.signInButton.click();
   }
 

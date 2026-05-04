@@ -1,7 +1,9 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from 'dotenv';
 
-dotenv.config({ path: '.env' });
+if (!process.env.CI) {
+  dotenv.config({ path: '.env' });
+}
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -23,6 +25,8 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html'], ['github']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  globalSetup: require.resolve('./tests/auth.setup'),
+
   use: {
     headless: !!process.env.CI,
     viewport: { width: 1440, height: 900 },
@@ -35,9 +39,29 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    /* Login and smoke tests: test UI login flow WITHOUT pre-loaded auth */
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: 'login-flow',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+      testMatch: ['**/login.spec.ts', '**/smoke.spec.ts'],
+    },
+
+    /* Future: webmail E2E tests that will use authenticated state */
+    {
+      name: 'authenticated',
+      use: {
+        ...devices['Desktop Chrome'],
+        channel: 'chrome',  
+        storageState: '.playwright/auth.json',
+      },
+      testMatch: ['**/webmail.spec.ts', '**/inbox.spec.ts', '**/compose.spec.ts'],
+    },
+
+    /* Unauthenticated tests: homepage, accessibility, etc. */
+    {
+      name: 'unauthenticated',
+      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+      testMatch: ['**/accessibility.spec.ts', '**/dashboard.spec.ts'],
     },
 
 
