@@ -29,6 +29,7 @@ jobs:
         TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
         TEST_USER_FULL_NAME: ${{ secrets.TEST_USER_FULL_NAME }}
         TEST_USER_PHONE: ${{ secrets.TEST_USER_PHONE }}
+        POSTEO_VALID_CREDENTIALS: ${{ secrets.POSTEO_VALID_CREDENTIALS }}
     - uses: actions/upload-artifact@v5
       if: ${{ !cancelled() }}
       with:
