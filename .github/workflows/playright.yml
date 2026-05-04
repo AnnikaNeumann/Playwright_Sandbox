@@ -12,8 +12,8 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
-    - uses: actions/setup-node@v5
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: 24
     - name: Install dependencies
@@ -24,13 +24,12 @@ jobs:
       run: npm run test:ci
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
-        POSTEO_VALID_CREDENTIALS: ${{ secrets.TEST_USER_EMAIL != '' && secrets.TEST_PASSWORD != '' && 'true' || 'false' }}
+        POSTEO_VALID_CREDENTIALS: ${{ secrets.POSTEO_VALID_CREDENTIALS }}
         TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
         TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
         TEST_USER_FULL_NAME: ${{ secrets.TEST_USER_FULL_NAME }}
         TEST_USER_PHONE: ${{ secrets.TEST_USER_PHONE }}
-        POSTEO_VALID_CREDENTIALS: ${{ secrets.POSTEO_VALID_CREDENTIALS }}
-    - uses: actions/upload-artifact@v5
+    - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
         name: playwright-report
@@ -45,8 +44,8 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v5
-    - uses: actions/setup-node@v5
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
       with:
         node-version: 24
     - name: Install dependencies
@@ -57,10 +56,10 @@ jobs:
       run: npm run test:accessibility:ci
       env:
         BASE_URL: ${{ secrets.BASE_URL }}
-        POSTEO_VALID_CREDENTIALS: ${{ secrets.TEST_USER_EMAIL != '' && secrets.TEST_PASSWORD != '' && 'true' || 'false' }}
+        POSTEO_VALID_CREDENTIALS: ${{ secrets.POSTEO_VALID_CREDENTIALS }}
         TEST_USER_EMAIL: ${{ secrets.TEST_USER_EMAIL }}
         TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
-    - uses: actions/upload-artifact@v5
+    - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
         name: accessibility-report
