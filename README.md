@@ -67,13 +67,43 @@ npm run show-report
 
 ## Environment setup
 
-Create a `.env` file for local execution and add required values such as:
+### Local execution
 
-- `BASE_URL` (optional, defaults to `https://posteo.de/en`; non-Posteo values are ignored by the shared login page object)
-- `TEST_USER_EMAIL`
-- `TEST_PASSWORD`
-- `TEST_USER_FULL_NAME`
-- `TEST_USER_PHONE`
+Create a `.env` file (see `.env.example`) and fill in the required values:
+
+| Variable | Required | Description |
+|---|---|---|
+| `BASE_URL` | Optional | Defaults to `https://posteo.de/en`; non-Posteo values are ignored by the login page object |
+| `TEST_USER_EMAIL` | Yes (auth tests) | Posteo account email address |
+| `TEST_PASSWORD` | Yes (auth tests) | Posteo account password |
+| `TEST_USER_FULL_NAME` | Optional | Used by profile/dashboard specs |
+| `TEST_USER_PHONE` | Optional | Used by profile/dashboard specs |
+| `POSTEO_VALID_CREDENTIALS` | Optional | Set to `true` to enable authenticated login/logout tests locally |
+
+### GitHub Actions secrets
+
+Go to **Settings → Secrets and variables → Actions** and ensure the following repository secrets are set:
+
+| Secret | Notes |
+|---|---|
+| `TEST_USER_EMAIL` | Posteo account email — re-enter if tests report a missing value |
+| `TEST_PASSWORD` | Posteo account password — re-enter if tests report a missing value |
+| `BASE_URL` | Recommended even with the fallback; set to `https://posteo.de/en` |
+| `POSTEO_VALID_CREDENTIALS` | Set to `true` to enable the authenticated login and logout tests in CI |
+| `TEST_USER_FULL_NAME` | Required by dashboard/profile specs |
+| `TEST_USER_PHONE` | Required by dashboard/profile specs |
+
+If tests fail with credential errors after adding secrets, re-enter them to rule out stale or incorrectly-typed values.
+
+### Provider-side IP blocking
+
+Posteo and some other providers may challenge or block requests originating from GitHub-hosted runner IP ranges. If credentials are verified correct but authenticated tests still fail only in CI, switch to a self-hosted runner for jobs that exercise authenticated flows:
+
+```yaml
+runs-on: self-hosted   # replace ubuntu-latest in the affected job
+```
+
+Self-hosted runners use your own network, which avoids cloud-runner IP blocks.
 
 ## Current focus
 
