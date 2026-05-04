@@ -4,89 +4,180 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Playwright (Current Spec)",
+      "name": "Debug: Current Spec (authenticated)",
       "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
       "args": [
         "test",
         "${file}",
-        "--project=chromium",
+        "--project=authenticated",
         "--headed",
-        "--workers=1"
+        "--workers=1",
+        "--timeout=0"
       ],
       "runtimeArgs": ["--nolazy"],
       "cwd": "${workspaceFolder}",
       "envFile": "${workspaceFolder}/.env",
-      "env": {
-        "PWDEBUG": "1",
-        "DEBUG_LOCATORS": "true"
-      },
+      "env": { "PWDEBUG": "1" },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Playwright (All Specs)",
+      "name": "Debug: Current Spec (unauthenticated)",
       "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
       "args": [
         "test",
-        "tests/specs",
-        "--project=chromium",
+        "${file}",
+        "--project=unauthenticated",
         "--headed",
-        "--workers=1"
+        "--workers=1",
+        "--timeout=0"
       ],
       "runtimeArgs": ["--nolazy"],
       "cwd": "${workspaceFolder}",
       "envFile": "${workspaceFolder}/.env",
-      "env": {
-        "PWDEBUG": "1",
-        "DEBUG_LOCATORS": "true"
-      },
+      "env": { "PWDEBUG": "1" },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Playwright (By Grep Tag)",
+      "name": "Debug: Current Spec (login-flow)",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+      "args": [
+        "test",
+        "${file}",
+        "--project=login-flow",
+        "--headed",
+        "--workers=1",
+        "--timeout=0"
+      ],
+      "runtimeArgs": ["--nolazy"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": { "PWDEBUG": "1" },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug: email.spec.ts",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+      "args": [
+        "test",
+        "tests/specs/email.spec.ts",
+        "--project=authenticated",
+        "--headed",
+        "--workers=1",
+        "--timeout=0"
+      ],
+      "runtimeArgs": ["--nolazy"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": { "PWDEBUG": "1" },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug: dashboard.spec.ts",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+      "args": [
+        "test",
+        "tests/specs/dashboard.spec.ts",
+        "--project=unauthenticated",
+        "--headed",
+        "--workers=1",
+        "--timeout=0"
+      ],
+      "runtimeArgs": ["--nolazy"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": { "PWDEBUG": "1" },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug: login.spec.ts",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+      "args": [
+        "test",
+        "tests/specs/login.spec.ts",
+        "--project=login-flow",
+        "--headed",
+        "--workers=1",
+        "--timeout=0"
+      ],
+      "runtimeArgs": ["--nolazy"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": { "PWDEBUG": "1" },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug: smoke.spec.ts",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+      "args": [
+        "test",
+        "tests/specs/smoke.spec.ts",
+        "--project=login-flow",
+        "--headed",
+        "--workers=1",
+        "--timeout=0"
+      ],
+      "runtimeArgs": ["--nolazy"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": { "PWDEBUG": "1" },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug: accessibility.spec.ts",
+      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
+      "args": [
+        "test",
+        "tests/specs/accessibility.spec.ts",
+        "--project=unauthenticated",
+        "--headed",
+        "--workers=1",
+        "--timeout=0"
+      ],
+      "runtimeArgs": ["--nolazy"],
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "env": { "PWDEBUG": "1" },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug: By Grep Tag",
       "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
       "args": [
         "test",
         "--grep",
         "${input:playwrightGrep}",
-        "--project=chromium",
         "--headed",
-        "--workers=1"
+        "--workers=1",
+        "--timeout=0"
       ],
       "runtimeArgs": ["--nolazy"],
       "cwd": "${workspaceFolder}",
       "envFile": "${workspaceFolder}/.env",
-      "env": {
-        "PWDEBUG": "1",
-        "DEBUG_LOCATORS": "true"
-      },
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Debug Playwright (Dashboard Spec)",
-      "program": "${workspaceFolder}/node_modules/@playwright/test/cli.js",
-      "args": [
-        "test",
-        "tests/specs/dashboard.spec.ts",
-        "--project=chromium",
-        "--headed",
-        "--workers=1"
-      ],
-      "runtimeArgs": ["--nolazy"],
-      "cwd": "${workspaceFolder}",
-      "envFile": "${workspaceFolder}/.env",
-      "env": {
-        "PWDEBUG": "1",
-        "DEBUG_LOCATORS": "true"
-      },
+      "env": { "PWDEBUG": "1" },
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen"
     }
@@ -96,8 +187,6 @@
       "id": "playwrightGrep",
       "type": "promptString",
       "description": "Enter Playwright grep pattern (e.g. @smoke|Login)",
-      "options": [
-      ],
       "default": "@smoke"
     }
   ]

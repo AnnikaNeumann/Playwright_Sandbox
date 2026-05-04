@@ -54,7 +54,7 @@ export default defineConfig({
         channel: 'chrome',  
         storageState: '.playwright/auth.json',
       },
-      testMatch: ['**/webmail.spec.ts', '**/inbox.spec.ts', '**/compose.spec.ts'],
+      testMatch: ['**/email.spec.ts'],
     },
 
     /* Unauthenticated tests: homepage, accessibility, etc. */
